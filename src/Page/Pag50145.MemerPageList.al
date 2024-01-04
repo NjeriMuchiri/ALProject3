@@ -25,13 +25,17 @@ page 50145 MemerPageList
                 {
                     ToolTip = 'Specifies the value of the Name field.';
                 }
-                 field(Age; Rec.Age)
+                 field(Age; Rec.MemAge)
                 {
                     ToolTip = 'Specifies the value of the Age field.';
                 }
                   field(RetiresIn; Rec.RetiresIn)
                 {
                     ToolTip = 'Specifies the value of the RetiresIn field.';
+                }
+                    field(DateOfDeath; Rec.DateOfDeath)
+                {
+                    ToolTip = 'Specifies the value of the DateOfDeath field.';
                 }
             }
         }

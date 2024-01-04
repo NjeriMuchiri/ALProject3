@@ -17,21 +17,26 @@ table 50140 MembersTable
             //AgeClc: Codeunit 
             begin
                 DOB := Rec.DateOfBirth;
-                // Message('Dateofbirth%1',DOB);
-                Age := CalculateAge(DOB);
-                RetiresIn := MemberRetirementAge(DOB);
+                Message('Your Age is %1',CalculateAge(DateOfBirth));
+                MemAge := CalculateAge(DateOfBirth);
+                RetiresIn := MemberRetirementAge(DateOfBirth);
+                DateOfDeath := MemberDateOfDeath(DateOfBirth);
             end;
         }
         field(50143; Name; Text[30])
         {
             DataClassification = ToBeClassified;
         }
-        field(50144; Age; Integer)
+        field(50144; MemAge; Integer)
         {
             DataClassification = ToBeClassified;              
             
         }
         field(50145; RetiresIn; Integer)
+        {
+            DataClassification = ToBeClassified;
+        }
+         field(50146; DateOfDeath; Integer)
         {
             DataClassification = ToBeClassified;
         }
@@ -86,9 +91,11 @@ table 50140 MembersTable
         Age: Decimal;
         Direction: text;
         currentday: Date;
+        Year: Integer;
     begin
         currentday := Today;
-        Message('Today %1 Dateofbirth %2', currentday,DateOfBirth);
+        Year := Date2DMY(DateOfBirth,3);
+        Message('Today %1 Dateofbirth %2', currentday,Year);
         AgeInDays := Today - DateOfBirth;
         Message('Age in days %1', AgeInDays);
         AgeInYears := AgeInDays / 365;
@@ -96,7 +103,7 @@ table 50140 MembersTable
        // Direction := '<';
         Age := Round(AgeInYears, 1, '<');
         Message('Your age is %1 years old', Age);
-        // exit(Age);
+        exit(Age);
     end;
 
     // procedure CalculateRetirementAge(CurrentAge: Date): Integer
@@ -128,10 +135,36 @@ table 50140 MembersTable
         TheRetirementAge: Integer;
         MembersDOB: Integer;
         RetiresIn: Integer;
+        DateOfretirement: Date;
+        Year: Integer;
     begin
         TheRetirementAge := 65;
         MembersDOB := CalculateAge(DateOfBirth);
-        RetiresIn := MembersDOB + TheRetirementAge;
-        Message('Your year of retirement is in %1 year', RetiresIn);        
-    end; 
+        DateOfretirement := CalcDate(Format(TheRetirementAge)+'Y',DateOfBirth);
+        RetiresIn := Date2DMY(DateOfretirement,3);
+        Message('Your year of retirement is in %1 year', RetiresIn);
+        exit(RetiresIn);     
+    end;
+    //Date of death function
+    procedure MemberDateOfDeath(MemberAgeCurrently: Date): Integer
+    var
+        AgeExpectancy: Integer;
+        MemDateOfBirth: Integer;
+        EstimatedY: Date;
+        ExpectedY: Integer;
+        Year: Integer;
+        Month: Integer;
+        Day: Integer;
+    begin
+        AgeExpectancy := 70;
+        MemDateOfBirth := CalculateAge(DateOfBirth);
+        EstimatedY := CalcDate(Format(AgeExpectancy) + 'Y', DateOfBirth);
+        Message('Year of death estimation %1', EstimatedY);
+        Year := Date2DMY(EstimatedY, 3);
+        Month := Date2DMY(EstimatedY, 2);
+        Day := Date2DMY(EstimatedY, 1);
+        ExpectedY := Year;
+        Message('Your Life Expectancy is %1', Year, Month, Day);
+        exit(ExpectedY);
+    end;
 }

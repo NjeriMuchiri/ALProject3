@@ -24,7 +24,7 @@ page 50103 PageMemberCard
                 {
                     
                 }
-                field(Age;Rec.Age)
+                field(Age;Rec.MemAge)
                 {
                     
                 }
@@ -32,7 +32,12 @@ page 50103 PageMemberCard
                 {
                     
                 }
+                 field(DateOfDeath;Rec.DateOfDeath)
+                {
+                    
+                }
             }
+         
         }
         area(Factboxes)
         {
