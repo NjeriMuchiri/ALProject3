@@ -4,7 +4,12 @@ table 50100 MyTable
 
     fields
     {
-        field(50104; DateOfBirth; Date)
+        //  field(50104; ID; Integer)
+        // {
+        //     DataClassification = ToBeClassified;
+        //     AutoIncrement=true;
+        // }
+        field(50105; DateOfBirth; Date)
         {
             DataClassification = ToBeClassified;
             trigger OnValidate()
@@ -16,7 +21,7 @@ table 50100 MyTable
                 CalculateAge(DOB);
             end;
         }
-        field(50105; Name; Text[30])
+        field(50106; Name; Text[30])
         {
             DataClassification = ToBeClassified;
         }
@@ -24,7 +29,7 @@ table 50100 MyTable
 
     // keys
     // {
-    //     key(Key1; MyField)
+    //     key(PK; ID )
     //     {
     //         Clustered = true;
     //     }

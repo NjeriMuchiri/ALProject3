@@ -8,3 +8,4 @@ enum 50102 vendorCounties
     value(3; "Kisumu"){}
     value(4; "Nyandarua"){}
 }
+

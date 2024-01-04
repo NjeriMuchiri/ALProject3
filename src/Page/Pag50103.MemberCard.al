@@ -1,9 +1,9 @@
-page 50103 PageName
+page 50103 PageMemberCard
 {
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = MyTable;
+    SourceTable = MembersTable;
 
     layout
     {
@@ -11,12 +11,24 @@ page 50103 PageName
         {
             group(GroupName)
             {
+                 field(ID;Rec.ID)
+                {
+                    
+                }
                 field(DateOfBirth; Rec.DateOfBirth)
                 {
                     ApplicationArea = All;
 
                 }
                 field(Name;Rec.Name)
+                {
+                    
+                }
+                field(Age;Rec.Age)
+                {
+                    
+                }
+                field(RetiresIn;Rec.RetiresIn)
                 {
                     
                 }
