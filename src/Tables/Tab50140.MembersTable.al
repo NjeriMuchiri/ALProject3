@@ -152,9 +152,14 @@ table 50140 MembersTable
         MemDateOfBirth: Integer;
         EstimatedY: Date;
         ExpectedY: Integer;
+        ExpectedM: Integer;
+        ExpectedD: Integer;
         Year: Integer;
         Month: Integer;
         Day: Integer;
+        TheDate: Date;
+        NowDate: Date;
+        OurDateToday: DateFormula;
     begin
         AgeExpectancy := 70;
         MemDateOfBirth := CalculateAge(DateOfBirth);
@@ -163,8 +168,12 @@ table 50140 MembersTable
         Year := Date2DMY(EstimatedY, 3);
         Month := Date2DMY(EstimatedY, 2);
         Day := Date2DMY(EstimatedY, 1);
+        ExpectedD := Day;
+        ExpectedM := Month;
         ExpectedY := Year;
-        Message('Your Life Expectancy is %1', Year, Month, Day);
+        Message('Your Life Expectancy is in day %1,of months %2, in the Year %3',Day, Month, Year);
         exit(ExpectedY);
+        exit(ExpectedM);
+        exit(ExpectedD);
     end;
 }
