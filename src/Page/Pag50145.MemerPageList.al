@@ -1,8 +1,8 @@
-page 50145 MemerPageList
+page 50145 MemberPageList
 {
     ApplicationArea = All;
     CardPageId = PageMemberCard;
-    Caption = 'MemerPageList';
+    Caption = 'MemberPageList';
     PageType = List;
     SourceTable = MembersTable;
     UsageCategory = Lists;
