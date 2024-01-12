@@ -47,6 +47,25 @@ page 50135 FixedAssetsPageList
                 end;
                 end;
             }
+            action(Assetssranges)
+            {
+                ApplicationArea = All;
+                
+                trigger OnAction()                   
+                begin
+                   buffer.Reset();
+
+                end;
+            }
+            action(AssetssFilter)
+            {
+                ApplicationArea = All;
+                
+                trigger OnAction()
+                begin
+                    Rec.SetFilter("No.", 'FA000010..FA000050');
+                end;
+            }
         }
     }
      var

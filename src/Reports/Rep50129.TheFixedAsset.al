@@ -17,18 +17,28 @@ report 50129 FixedAssetReport
             {
                 
             }
+            trigger OnPreDataItem()
+            begin
+                if "Fixed Asset".GetFilter("No.")<>
+                '' then
+                Message("Fixed Asset".GetRangeMin("No."));
+                Message("Fixed Asset".GetRangeMax("No."));
+
+
+            end;
              trigger OnAfterGetRecord()
-             var
-                myInt: Integer;
              begin
-                
+                if FixedAsset.find('-') then 
+                begin
+                repeat
                 buffer.init;
-                buffer."No." := "Fixed Asset"."No.";
-                buffer.Description := "Fixed Asset".Description;
+                buffer."No." := FixedAsset."No.";
+                buffer.Description := FixedAsset.Description;
                 buffer.Insert();
- 
+                until FixedAsset.Next() = 0;
+                end;
              end;            
-        }     
+        }    
     }
     requestpage
     {
@@ -71,4 +81,5 @@ report 50129 FixedAssetReport
     var
         myInt: Integer;
         buffer: Record "BufferFixedAssetsTable";
+        FixedAsset: Record "Fixed Asset";
 }

@@ -49,5 +49,4 @@ table 50130 MyFixedAssets
     begin
         
     end;
-    
 }
